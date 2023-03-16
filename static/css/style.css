@@ -1,5 +1,11 @@
 /* Login Page*/
-
+.bodyBackground{
+  background-color: #2691d9;
+  background-image: url('img_girl.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
 .log {
   /*div for login page*/
   position: absolute;
@@ -266,13 +272,36 @@ label > input[type="checkbox"]:checked + * {
   color: #fff;
   padding: 10px;
   border-radius: 25px;
-  width: 1000px;
-  height: fit-content;
+  width: 50%;
   margin-top: 30px;
-  margin-left: 10%;
+  margin-left: auto;
+  margin-right: auto;
   font-family: Calibri;
 }
 
+.user-info {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #333;
+}
+
+tr:nth-child(odd) {
+  background-color: #444;
+}
 .profile tr td:first-child,
 .profile p {
   font-weight: bold;
@@ -555,9 +584,22 @@ label > input[type="checkbox"]:checked + * {
   cursor: pointer;
   margin-left: 50%;
 }
+.user-info {
+  opacity: 0; /* hide the div initially */
+  animation: fade-in 0.5s ease-in-out forwards; /* apply the animation */
+  font-family: Arial, sans-serif; /* set the font family */
+  font-size: 14px; /* set the font size */
+  color: #444; /* set the text color */
+  text-align: center; /* center the text */
+  margin: 10px; /* add some margin */
+  /* padding-top: 40%; */
+}
 
-
-
+/* define the animation */
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
 
 
 

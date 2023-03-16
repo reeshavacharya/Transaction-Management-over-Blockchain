@@ -23,8 +23,21 @@
   }
 
   .styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  opacity: 0;
+  animation: fade-in 0.5s ease forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
   .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #104aeb;
@@ -34,43 +47,44 @@
     font-weight: bold;
     color: #000000;
   }
+
+  .table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
 <div class="pageclass">
   <div class="table">
-    <table style="width: 100%; margin-top:50px" id="maintable" class="styled-table">
-      <thead>
-        <tr>
-          <th>Index</th>
-          <th>Time</th>
-          <th>Proof</th>
-          <th>Transaction</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for element in response['chain'][:-11:-1] %}
-        <tr class="active-row">
-          <td>{{element.index}}</td>
-          <td>{{element.timestamp}}</td>
-          <td>{{element.proof}}</td>
-          <td>{% for trans in element.transactions %}
-            Index : {{trans.index}}<br>
-            From : {{trans.sender}}<br>
-            To : {{trans['receiver']}}<br>
-            Amount : {{trans['amount']}}<br>
-            Transaction Time: {{trans['transaction_time']}}<br>
-            Signature: {{trans['signature']}}<br><br>
-            {% endfor %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+      <table style="width: 80%; margin-top:50px" id="maintable" class="styled-table table-animated">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Time</th>
+            <th>Proof</th>
+            <th>Transaction</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for element in response['chain'][:-11:-1] %}
+          <tr class="active-row">
+            <td>{{element.index}}</td>
+            <td>{{element.timestamp}}</td>
+            <td>{{element.proof}}</td>
+            <td>{% for trans in element.transactions %}
+              Index : {{trans.index}}<br>
+              From : {{trans.sender}}<br>
+              To : {{trans['receiver']}}<br>
+              Amount : {{trans['amount']}}<br>
+              Transaction Time: {{trans['transaction_time']}}<br>
+              Signature: {{trans['signature']}}<br><br>
+              {% endfor %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
   </div>
 </div>
-
-
-
-
-
 
 {% endblock %}
