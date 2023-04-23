@@ -23,7 +23,7 @@ def verifyECDSAsecp256k1(msg, signature, public_key):
 
 
 private_key = bitcoin.random_key()
-decoded_private_key = bitcoin.decode_privkey(private_key, 'hex')
+decoded_private_key = bitcoin.decode_privkey(private_key, 'hex') ##concise binary object representation CBOR HEX
 print("Private Key (hex) is: ", private_key)
 
 
@@ -38,7 +38,7 @@ hex_compressed_public_key = compressed_prefix + \
 print("Compressed Public Key (hex) is:", hex_compressed_public_key)
 
 
-msg = "my name is nabin"
+msg = "my name is reeshav"
 signature = signECDSAsecp256k1(msg, decoded_private_key)
 print(signature)
 print("Message:", msg)
