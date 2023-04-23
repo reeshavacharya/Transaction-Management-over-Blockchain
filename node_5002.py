@@ -14,8 +14,6 @@ from pycoin.ecdsa import generator_secp256k1, sign, verify
 import matplotlib
 matplotlib.use('Agg')
 
-#setting url to home
-
 # Building a Blockchain
 
 
@@ -144,18 +142,19 @@ mydb = mysql.connector.connect(
 
 # host address and port
 host_add = '127.0.0.1'
-port_add = 5000
+port_add = 5002
 
 # making cursor
 cursor = mydb.cursor(dictionary=True)
 
 # Multiply the EC generator point G with the private key to get a public key point
+
+
 def public_key_gen(temp_private_key):
     decoded_private_key = bitcoin.decode_privkey(
         temp_private_key, 'hex')
     public_key = bitcoin.fast_multiply(bitcoin.G, decoded_private_key)
     return public_key
-
 # signature conversion functions
 
 
@@ -218,7 +217,7 @@ def home():
             msg = 'Incorrect username/password!'
     return render_template('homepage.html', msg=msg)
 
-#seting default url to home   
+#new   
 @app.route('/')
 def index():
     return redirect(url_for('home'))
